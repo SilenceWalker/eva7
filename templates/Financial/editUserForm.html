@@ -1,0 +1,36 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<section id="content">
+	<section class="container_12 clearfix">
+		<section id="main" class="grid_9 push_3">
+			<article id="dashboard">
+				<h1>Users</h1>
+
+				<h2>Create User</h2>
+				
+				<a href="{% url edit-user/radius user_n %}">Edit Internet Informations</a>
+				<form method="POST" class="uniform" action="{% url edit-user/basic user_n %}" > {% csrf_token %}
+					<fieldset>
+					
+					<legend>Basic Informations</legend>
+					
+					<dl class="inline">
+					{% for field in form %}
+						<dt><label> {{ field.label_tag }} </label></dt>
+								 
+							<dd>
+								{{ field }}
+								<small>{{ field.help_text }}</small>
+							</dd>
+					{% endfor %}
+					
+				
+				<dt><input type="submit" value="Submit" class="button"/></dt>
+				</dl>				
+				</form>
+				
+			</article>
+		</section>
+{% endblock %} 

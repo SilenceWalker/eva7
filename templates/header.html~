@@ -1,0 +1,173 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<title>Eva7 - Gerenciamento de Provedores</title>
+<meta charset="utf-8">
+
+<link rel="stylesheet" type="text/css" href="/media/css/style.css">
+<link rel="alternate stylesheet" type="text/css" href="/media/css/skins/blue.css" title="blue">
+<link rel="alternate stylesheet" type="text/css" href="/media/css/skins/orange.css" title="orange">
+<link rel="alternate stylesheet" type="text/css" href="/media/css/skins/red.css" title="red">
+<link rel="alternate stylesheet" type="text/css" href="/media/css/skins/green.css" title="green">
+<link rel="alternate stylesheet" type="text/css" href="/media/css/skins/purple.css" title="purple">
+<link rel="alternate stylesheet" type="text/css" href="/media/css/skins/yellow.css" title="yellow">
+<link rel="alternate stylesheet" type="text/css" href="/media/css/skins/black.css" title="black">
+<link rel="stylesheet" type="text/css" href="/media/css/skins/gray.css" title="gray">
+
+<link rel="stylesheet" type="text/css" href="/media/css/superfish.css">
+<link rel="stylesheet" type="text/css" href="/media/css/uniform.default.css">
+<link rel="stylesheet" type="text/css" href="/media/css/jquery.wysiwyg.css">
+<link rel="stylesheet" type="text/css" href="/media/css/facebox.css">
+<link rel="stylesheet" type="text/css" href="/media/css/smoothness/jquery-ui-1.8.8.custom.css">
+
+<!--[if lte IE 8]>
+<script type="text/javascript" src="/media/js/html5.js"></script>
+<script type="text/javascript" src="/media/js/selectivizr.js"></script>
+<script type="text/javascript" src="/media/js/excanvas.min.js"></script>
+<![endif]-->
+
+<script type="text/javascript" src="/media/js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="/media/js/jquery-ui-1.8.8.custom.min.js"></script>
+<script type="text/javascript" src="/media/js/jquery.validate.min.js"></script>
+<script type="text/javascript" src="/media/js/jquery.uniform.min.js"></script>
+<script type="text/javascript" src="/media/js/jquery.wysiwyg.js"></script>
+<script type="text/javascript" src="/media/js/superfish.js"></script>
+<script type="text/javascript" src="/media/js/cufon-yui.js"></script>
+<script type="text/javascript" src="/media/js/Delicious_500.font.js"></script>
+<script type="text/javascript" src="/media/js/jquery.flot.min.js"></script>
+<script type="text/javascript" src="/media/js/custom.js"></script>
+<script type="text/javascript" src="/media/js/facebox.js"></script>
+
+<script type="text/javascript" src="/media/js/jquery.xdomainajax.js"></script>
+<script type="text/javascript" src="/media/js/loadPage.js"></script>
+<script type="text/javascript" src="/media/js/jquery.jeditable.mini.js"></script>
+
+<script type="text/javascript">
+jQuery(function($) {
+		
+	/* flot
+	------------------------------------------------------------------------- */
+	var d1 = [[1293814800000, 17], [1293901200000, 29], [1293987600000, 34], [1294074000000, 46], [1294160400000, 36], [1294246800000, 16], [1294333200000, 36]];
+    var d2 = [[1293814800000, 20], [1293901200000, 75], [1293987600000, 44], [1294074000000, 49], [1294160400000, 56], [1294246800000, 23], [1294333200000, 46]];
+    var d3 = [[1293814800000, 32], [1293901200000, 42], [1293987600000, 59], [1294074000000, 57], [1294160400000, 47], [1294246800000, 56], [1294333200000, 59]];
+
+	$.plot($('#pageviews'), [
+        { label: 'Unique',  data: d1},
+        { label: 'Pages',  data: d2},
+        { label: 'Hits',  data: d3}
+    ], {
+		series: {
+			lines: { show: true },
+			points: { show: true }
+		},
+		xaxis: {
+			mode: 'time',
+			timeformat: '%b %d'
+		}
+	});
+
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+   $('body').addClass('fluid');
+   });
+</script>
+
+<script type="text/javascript" src="/media/js/jquery.cookie.js"></script>
+<script type="text/javascript" src="/media/js/switcher.js"></script>
+
+</head>
+<body>
+
+<header id="top">
+	<div class="container_12 clearfix">
+		<div id="logo" class="grid_5">
+			<!-- replace with your website title or logo -->
+			<a id="site-title" href="dashboard.html"><span>Eva</span>7 - Sistema de <span>Gerenciamento de Provedores</span></a>
+			
+		</div>
+		
+		<!-- <div class="grid_4" id="colorstyle">
+			<div>Change Color</div>
+			<a href="#" rel="blue"></a>
+			<a href="#" rel="green"></a>
+			<a href="#" rel="red"></a>
+			<a href="#" rel="purple"></a>
+			<a href="#" rel="orange"></a>
+			<a href="#" rel="yellow"></a>
+			<a href="#" rel="black"></a>
+			<a href="#" rel="gray"></a>
+		</div> -->
+		
+		<div class="grid_4" id="colorstyle">
+		
+		</div>
+
+		<div id="userinfo" class="grid_3">
+			Welcome, <a href="#">{{ user }}</a>
+		</div>
+	</div>
+</header>
+
+<nav id="topmenu">
+	<div class="container_12 clearfix">
+		<div class="grid_12">
+			<ul id="mainmenu" class="sf-menu">
+				<li><a href="{% url dashboard %}">Home</a></li>
+				<!-- Incluir class="current" mais tard 				
+				<li><a href="styles.html">Styles</a></li>
+				<li><a href="tables.html">Tables</a></li>
+				<li><a href="forms.html">Forms</a></li> -->
+				<li><a href="#">Clients</a>
+					<ul>
+						<li><a href="{% url create-user/basic %}">Create a New</a></li>
+						<li><a href="{% url list-user %}">List Clients</a></li>
+					</ul>
+				</li>
+				<li><a href="#">Service Order</a>
+					<ul>
+						<li><a href="{% url create-so %}">Open a Order</a></li>
+						<li><a href="{% url list-so %}">List Orders</a></li>
+					</ul>
+				</li>
+				<li><a href="#">Configurations</a>
+					<ul>
+						<li><a href="#">Coverage Area</a>
+					       <ul>
+						      <li><a href="{% url create-ca %}">Add a Coverage Area</a></li>
+						      <li><a href="{% url list-ca %}">List all</a></li>
+					       </ul>
+				      </li>
+				      <li><a href="#">Technical Support</a>
+					       <ul>
+						      <li><a href="{% url create-techsupport/basic %}">Add a Technical</a></li>
+						      <li><a href="{% url list-ca %}">List all</a></li>
+					       </ul>
+				      </li>       
+						<li><a href="#">Technical</a>
+					       <ul>
+						      <li><a href="{% url create-tech/basic %}">Add a Technical</a></li>
+						      <li><a href="{% url list-tech %}">List all</a></li>
+					       </ul>
+				      </li> 
+					</ul>
+				</li>
+				
+				<!--
+				<li><a href="#">Layout Width</a>
+					<ul id="layoutwidth">
+						<li><a href="#" rel="fixed">Fixed</a></li>
+						<li><a href="#" rel="fluid">Fluid</a></li>
+					</ul>
+				</li>
+				-->
+			</ul>
+			<ul id="usermenu">
+				<!-- <li><a href="#" class="inbox">Inbox (3)</a></li> -->
+				<li><a href="/logout/">Logout</a></li>
+			</ul>
+		</div>
+	</div>
+</nav>

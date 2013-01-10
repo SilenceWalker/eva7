@@ -1,0 +1,18 @@
+<fieldset>
+					
+					<legend>Internet Provide Informations</legend>
+					
+					<dl class="inline">
+					{% for field in form %}
+						<dt><label> {{ field.label_tag }}: </label></dt>
+								 
+							<dd>
+								{{ field }}
+								<small>{{ field.help_text }}</small>
+							</dd>
+					{% endfor %}
+					
+				
+				<dt><input type="submit" value="Submit" class="button"/></dt>
+                    </dl>				
+                    </fieldset>

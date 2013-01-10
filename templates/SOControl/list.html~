@@ -1,0 +1,88 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<section id="content">
+	<section class="container_12 clearfix">
+		<section id="main" class="grid_9 push_3">
+			<article>
+				<h1>Service Orders</h1>
+
+				<h2>Create S.O</h2>
+				<table id="table2" class="gtable detailtable">
+					<thead>
+						<tr>
+							<th><input type="checkbox" class="checkall" /></th>
+							<th>ID</th>
+							<th>Username</th>
+							<th>Tecnic</th>
+							<th>Open</th>
+							<th>Status</th>
+							<th>Closed date</th>
+							<th>Edit</th>
+							<th>Details</th>
+						</tr>
+					</thead>
+					
+					{% for os in os_list %}
+					<tbody>
+						<tr>
+							<td><input type="checkbox" /></td>
+							<td>{{ os.id }}</td>
+							<td>{{os.client}}</td>
+							<td>{{ os.tecnic }}</td>
+							<td>{{ os.open_date }}</td>
+							<td>{{ os.stats }}</td>
+							<td>{{ os.close_date }}</td>
+							<td><a href="{% url edit-so os.id %}" >Editar</a></td>
+							<td>
+								<a href="#" class="detail-link" id="detail">Detail</a>
+							</td>
+						</tr>
+						
+						<tr class="detail">
+							<td colspan="9">
+								<table>
+									<thead>
+										<tr>
+											<th>Description</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>{{os.description}}</td>
+										</tr>
+									</tbody>
+								</table>
+							</td>
+						</tr>
+						
+					</tbody>
+					
+					{% endfor %}
+					
+					
+					<div class="tablefooter clearfix">
+						<div class="actions">
+							<select>
+								<option>Action:</option>
+								<option>Delete</option>
+								<option>Move</option>
+							</select>
+							<button class="button small">Apply</button>
+						</div>
+						<div class="pagination">
+							<!--<a href="#">Prev</a>-->
+							<a href="#" class="current">1</a>
+							<a href="#">2</a>
+							<a href="#">3</a>
+							<a href="#">4</a>
+							<a href="#">5</a>
+							...
+							<a href="#">78</a>
+							<a href="#">Next</a>
+						</div>
+					</div>
+				</table>
+			</article>
+		</section>
+		{% endblock %}

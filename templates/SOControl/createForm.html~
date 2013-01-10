@@ -1,0 +1,35 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<section id="content">
+	<section class="container_12 clearfix">
+		<section id="main" class="grid_9 push_3">
+			<article id="dashboard">
+				<h1>Service Orders</h1>
+
+				<h2>Create Service Orders</h2>
+				<form method="POST" class="uniform" action="{% url create-so %}" > {% csrf_token %}
+					<fieldset>
+                    <legend>OS Info</legend>
+                    
+                    <dl class="inline">
+                    {% for field in form %}
+                     <dt style='color:red; font-weight: bold;'>{{ field.errors }}</dt>                    
+                    <dt><label> {{ field.label_tag }}: </label></dt>
+                    
+                    <dd>
+                        {{ field }}
+                        <small>{{ field.help_text }}</small>
+                    </dd>
+                    {% endfor %}
+                    
+                    <dd><dt><input type="submit" value="Submit" class="button"/></dt></dd>
+                    </dl>
+                    </fieldset>
+                    
+                </form>
+				
+			</article>
+		</section>
+{% endblock %}

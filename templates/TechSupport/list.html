@@ -1,0 +1,81 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<section id="content">
+	<section class="container_12 clearfix">
+		<section id="main" class="grid_9 push_3">
+			<article>
+				<h1>Technical Support</h1>
+
+				<h2>List T.S.</h2>
+				<table id="table2" class="gtable detailtable">
+					<thead>
+						<tr>
+							<th><input type="checkbox" class="checkall" /></th>
+							<th>Username</th>
+							<th>Email</th>
+							<th>Edit</th>
+							<th>Details</th>
+						</tr>
+					</thead>
+					
+					{% for ts in ts_list %}
+					<tbody>
+						<tr>
+							<td><input type="checkbox" /></td>
+							<td>{{ ts.tech_user.first_name }} {{ ts.tech_user.last_name }}</td>
+							<td>{{ts.tech_user.email}}</td>
+							
+							<td><a href="{% url edit-techsupport ts.tech_user.id %}" >Editar</a></td>
+							<td>
+								<a href="#" class="detail-link" id="detail">Detail</a>
+							</td>
+						</tr>
+						
+						<tr class="detail">
+							<td colspan="9">
+								<table>
+									<thead>
+										<tr>
+											<th>Description</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>{{os.description}}</td>
+										</tr>
+									</tbody>
+								</table>
+							</td>
+						</tr>
+						
+					</tbody>
+					
+					{% endfor %}
+					
+					
+					<div class="tablefooter clearfix">
+						<div class="actions">
+							<select>
+								<option>Action:</option>
+								<option>Delete</option>
+								<option>Move</option>
+							</select>
+							<button class="button small">Apply</button>
+						</div>
+						<div class="pagination">
+							<!--<a href="#">Prev</a>-->
+							<a href="#" class="current">1</a>
+							<a href="#">2</a>
+							<a href="#">3</a>
+							<a href="#">4</a>
+							<a href="#">5</a>
+							...
+							<a href="#">78</a>
+							<a href="#">Next</a>
+						</div>
+					</div>
+				</table>
+			</article>
+		</section>
+		{% endblock %}

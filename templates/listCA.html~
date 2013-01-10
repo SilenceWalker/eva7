@@ -1,0 +1,78 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<section id="content">
+	<section class="container_12 clearfix">
+		<section id="main" class="grid_9 push_3">
+			<article>
+				<h1>Service Orders</h1>
+
+				<h2>Create S.O</h2>
+				<table id="table2" class="gtable detailtable">
+					<thead>
+						<tr>
+							<th><input type="checkbox" class="checkall" /></th>
+							<th>City</th>
+							<th>State</th>
+							<th>Country</th>
+						</tr>
+					</thead>
+					
+					{% for ca in CA_list %}
+					<tbody>
+						<tr>
+							<td><input type="checkbox" /></td>
+							<td>{{ ca.city }}</td>
+							<td>{{ ca.state }}</td>
+							<td>{{ ca.country }}</td>
+							<td><a href="{% url edit-ca ca.city %}" >Editar</a></td>
+							
+						</tr>
+						
+						<tr class="detail">
+							<td colspan="4">
+								<table>
+									<thead>
+										<tr>
+											<th>Description</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td></td>
+										</tr>
+									</tbody>
+								</table>
+							</td>
+						</tr>
+						
+					</tbody>
+					
+					{% endfor %}
+					
+					
+					<div class="tablefooter clearfix">
+						<div class="actions">
+							<select>
+								<option>Action:</option>
+								<option>Delete</option>
+								<option>Move</option>
+							</select>
+							<button class="button small">Apply</button>
+						</div>
+						<div class="pagination">
+							<!--<a href="#">Prev</a>-->
+							<a href="#" class="current">1</a>
+							<a href="#">2</a>
+							<a href="#">3</a>
+							<a href="#">4</a>
+							<a href="#">5</a>
+							...
+							<a href="#">78</a>
+							<a href="#">Next</a>
+						</div>
+					</div>
+				</table>
+			</article>
+		</section>
+		{% endblock %}

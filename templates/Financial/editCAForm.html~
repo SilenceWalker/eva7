@@ -1,0 +1,35 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<section id="content">
+	<section class="container_12 clearfix">
+		<section id="main" class="grid_9 push_3">
+			<article id="dashboard">
+				<h1>Users</h1>
+
+				<h2>Create User</h2>
+				
+				<form method="POST" class="uniform" action="{% url edit-ca city 	%}" > {% csrf_token %}
+					<fieldset>
+					
+					<legend>Basic Informations</legend>
+					
+					<dl class="inline">
+					{% for field in form %}
+						<dt><label> {{ field.label_tag }} </label></dt>
+								 
+							<dd>
+								{{ field }}
+								<small>{{ field.help_text }}</small>
+							</dd>
+					{% endfor %}
+					
+				
+				<dt><input type="submit" value="Submit" class="button"/></dt>
+				</dl>				
+				</form>
+				
+			</article>
+		</section>
+{% endblock %} 

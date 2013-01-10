@@ -1,0 +1,35 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<section id="content">
+	<section class="container_12 clearfix">
+		<section id="main" class="grid_9 push_3">
+			<article id="dashboard">
+				<h1>Technical Support</h1>
+
+				<h2>Add a Technical Support</h2>
+				<form method="POST" class="uniform" action="{% ifequal info_name 'Basic' %}{% url create-techsupport/basic %} {% else %} {% url create-techsupport/advanced user_n %} {% endifequal %}" > {% csrf_token %}
+					<fieldset>
+                    <legend>{{ info_name }} Informations</legend>
+                    
+                    <dl class="inline">
+                    {% for field in form %}
+                     <dt style='color:red; font-weight: bold;'>{{ field.errors }}</dt>                    
+                    <dt><label> {{ field.label_tag }}: </label></dt>
+                    
+                    <dd>
+                        {{ field }}
+                        <small>{{ field.help_text }}</small>
+                    </dd>
+                    {% endfor %}
+                    
+                    <dd><dt><input type="submit" value="Submit" class="button"/></dt></dd>
+                    </dl>
+                    </fieldset>
+                    
+                </form>
+				
+			</article>
+		</section>
+{% endblock %}

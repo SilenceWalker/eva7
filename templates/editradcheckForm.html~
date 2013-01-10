@@ -1,0 +1,61 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<section id="content">
+	<section class="container_12 clearfix">
+		<section id="main" class="grid_9 push_3">
+			<article id="dashboard">
+				<h1>Users</h1>
+
+				<h2>Edit User</h2>
+				<form method="POST" class="uniform" action="{% url edit-user/radius user_n %}" > {% csrf_token %}
+					<fieldset>
+					<h3>
+                  <b>ID: {{user_n}}</b>
+               </h3>
+					
+					<legend>Internet Informations</legend>
+					    {% for user in user_details %}
+					       {{ user.attribute }}
+					       {{ user.value }}
+					    {% endfor %}
+								
+				</form>
+				
+			</article>
+		</section>
+{% endblock %} {% extends 'main.html' %}
+
+{% block content %}
+
+<section id="content">
+	<section class="container_12 clearfix">
+		<section id="main" class="grid_9 push_3">
+			<article id="dashboard">
+				<h1>Users</h1>
+
+				<h2>Create User</h2>
+				<form method="POST" class="uniform" action="{% url edit-user/radius user_n %}" > {% csrf_token %}
+					<fieldset>
+					
+					<legend>Internet Informations</legend>
+					
+					<dl class="inline">
+					{% for field in form %}
+						<dt><label> {{ field.label_tag }} </label></dt>
+								 
+							<dd>
+								{{ field }}
+								<small>{{ field.help_text }}</small>
+							</dd>
+					{% endfor %}
+					
+				
+				<dt><input type="submit" value="Submit" class="button"/></dt>
+				</dl>				
+				</form>
+				
+			</article>
+		</section>
+{% endblock %} 
